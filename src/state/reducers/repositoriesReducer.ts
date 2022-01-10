@@ -7,8 +7,14 @@ type RepositoriesState = {
   data: string[]
 }
 
+const initialState: RepositoriesState = {
+  isLoading: false,
+  error: null,
+  data: [],
+}
+
 export const repositoriesReducer = (
-  state: RepositoriesState,
+  state: RepositoriesState = initialState,
   action: Action
 ): RepositoriesState => {
   switch (action.type) {
