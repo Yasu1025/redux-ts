@@ -9,7 +9,6 @@ export const RepositoriesList = () => {
   const { data, isLoading, error } = useTypedSelector(
     state => state.repositories
   )
-  console.log(data)
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -21,6 +20,9 @@ export const RepositoriesList = () => {
         <input value={term} onChange={e => setTerm(e.target.value)} />
         <button>Search</button>
       </form>
+      {error && <h3>{error}</h3>}
+      {isLoading && <h3>Loading...</h3>}
+      {!error && !isLoading && data.map(d => <p key={d}>{d}</p>)}
     </div>
   )
 }
